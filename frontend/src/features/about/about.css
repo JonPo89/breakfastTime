@@ -1,0 +1,18 @@
+#aboutText{
+    width: 60%;
+    align-items: center;
+    text-align: justify;
+}
+
+#oldCardDesigns{
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+}
+
+#oldCardDesigns img{
+    max-height: 15rem;
+    margin: 0.5rem 1rem;
+}
