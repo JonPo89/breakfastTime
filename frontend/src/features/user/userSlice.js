@@ -44,7 +44,6 @@ export const loginUser = createAsyncThunk(
                 return rejectWithValue(errorData)
             }
             const data = await response.json();
-            console.log(data);
             return data;
         } catch (err) {
             console.log('Error signing in' + err.message);
@@ -145,6 +144,7 @@ const userSlice = createSlice({
                 state.hasError = false;
                 state.isLoading = false;
                 state.isLoggedIn = true;
+                console.log(action.payload);
                 state.profile = action.payload.user;
             })
             .addCase(createUser.pending, (state) => {
