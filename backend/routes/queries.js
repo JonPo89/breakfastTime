@@ -15,8 +15,8 @@ const pool = new Pool({
 
 
 const createSessionToken = () => {
-    const payload = { cartItems: [] };
-    const secret = 'indicative_secreT1!';
+    const payload = {user_id: user.user_id, username: user.username, name: user.name, email: user.email, cartItems: user.cartItems ? user.cartItems : [] };
+    const secret = process.env.JWT_SECRET;
     const options = { expiresIn: '24h'};
     return jwt.sign(payload, secret, options);
 }
@@ -229,6 +229,9 @@ const searchProducts = (req, res) => {
 };
 
 const getCartItems = (req, res) => {
+    if (!req.user || !req.user.user_id) {
+        return res.status(401).json({ error: 'Unauthorized. User not authenticated.' });
+    }
     pool.query(' SELECT product_id, quantity FROM cart_items WHERE user_id = $1', [req.user.user_id], (err, results) => {
         if (err) {
             console.log(err);
