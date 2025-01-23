@@ -14,7 +14,6 @@ export const checkAuth = createAsyncThunk(
             });
             if (!response.ok) throw new Error('Failed to authorize');
             const data = await response.json();
-            console.log(data)
             return data;
 
         } catch(err) {
@@ -144,7 +143,6 @@ const userSlice = createSlice({
                 state.hasError = false;
                 state.isLoading = false;
                 state.isLoggedIn = true;
-                console.log(action.payload);
                 state.profile = action.payload.user;
             })
             .addCase(createUser.pending, (state) => {

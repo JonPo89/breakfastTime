@@ -28,7 +28,7 @@ function App() {
     dispatch(checkAuth());
     dispatch(loadProducts());
     if (isLoggedIn) {
-      if (cartItems.length === 0){
+      if (!cartItems || cartItems.length === 0){
         dispatch(loadItemsFromCart())
         dispatch(loadOrders());
       }
