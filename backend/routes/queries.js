@@ -15,7 +15,7 @@ const pool = new Pool({
 
 
 const createSessionToken = () => {
-    const payload = {user_id: user.user_id, username: user.username, name: user.name, email: user.email, cartItems: user.cartItems ? user.cartItems : [] };
+    const payload = { cartItems : [] };
     const secret = process.env.JWT_SECRET;
     const options = { expiresIn: '24h'};
     return jwt.sign(payload, secret, options);
