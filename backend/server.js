@@ -9,7 +9,18 @@ const db = require('./routes/queries');
 const cookieParser = require('cookie-parser');
 
 app.use(cors({
-  origin: process.env.FE_ORIGIN,
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+        process.env.FE_ORIGIN,
+        'http://localhost:3000', 
+    ];
+
+    if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+    } else {
+        callback(new Error('Not allowed by CORS'));
+    }
+},
   credentials: true
 }));
 
