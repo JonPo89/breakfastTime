@@ -70,7 +70,7 @@ const checkAuth = async (req, res, next) => {
             res.cookie('token', token, {
                 httpOnly: true,
                 secure: false,
-                sameSite: 'lax',
+                sameSite: 'None',
                 maxAge: 3600000
             });
             return res.status(200).json({ isAuthenticated: false });
@@ -122,7 +122,7 @@ const createUser = async (req, res) => {
                 }
                 const user = results.rows[0];
                 const token = jwt.sign({ user_id: user.user_id, username: user.username, name: user.name, email: user.email, cartItems: user.cartItems }, 'indicative_secreT1!', { expiresIn: '1h' });
-                res.cookie('token', token, { httpOnly: true, secure: false, sameSite: 'lax', maxAge: 3600000 });
+                res.cookie('token', token, { httpOnly: true, secure: false, sameSite: 'None', maxAge: 3600000 });
 
                 req.user = { user_id: user.user_id, username: user.username, name: user.name, email: user.email, cartItems: req.user ? req.user.cartItems : [] };
                 console.log(user);
@@ -143,7 +143,7 @@ const loginUser = async (req, res) => {
             const validPassword = await bcrypt.compare(password, userExists.rows[0].password_hash);
             if (validPassword) {
                 const token = updateTokenWithUser(req.cookies.token || null, userExists.rows[0]);
-                res.cookie('token', token, { httpOnly: true, secure: false, sameSite: 'lax', maxAge: 3600000 });
+                res.cookie('token', token, { httpOnly: true, secure: false, sameSite: 'None', maxAge: 3600000 });
 
                 req.user = {user_id: userExists.rows[0].user_id, username: userExists.rows[0].username, name: userExists.rows[0].name, email: userExists.rows[0].email, cartItems: req.user ? req.user.cartItems : []};
                 return res.status(201).json({token: token, user:{user_id: req.user.user_id, username: req.user.username, name: req.user.name, email: req.user.email}});
