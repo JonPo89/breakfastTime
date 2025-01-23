@@ -44,6 +44,7 @@ export const loginUser = createAsyncThunk(
                 return rejectWithValue(errorData)
             }
             const data = await response.json();
+            console.log(data);
             return data;
         } catch (err) {
             console.log('Error signing in' + err.message);
