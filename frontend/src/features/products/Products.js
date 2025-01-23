@@ -1,13 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import './products.css';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { selectProducts, loadProductDetails, selectActiveProduct } from './productSlice';
+import { selectProducts, loadProductDetails } from './productSlice';
 
 export function Products () {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    
 
     const productList = useSelector(selectProducts);
 

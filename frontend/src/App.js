@@ -16,7 +16,7 @@ import { Orders } from './features/orders/Orders.js';
 import { OrderComplete } from './features/orders/OrderComplete.js';
 import { Search } from './features/search/Search.js';
 import { loadProducts } from './features/products/productSlice.js';
-import { checkAuth, selectIsLoggedIn, selectUser } from './features/user/userSlice.js';
+import { checkAuth, selectIsLoggedIn } from './features/user/userSlice.js';
 import { loadItemsFromCart, selectCart } from './features/cart/cartSlice.js';
 import { loadOrders } from './features/orders/orderSlice.js';
 
@@ -24,19 +24,17 @@ function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const cartItems = useSelector(selectCart);
-  
-  let userDetails = useSelector(selectUser);
+
   useEffect(() => {
     dispatch(checkAuth());
     dispatch(loadProducts());
-    console.log(userDetails);
     if (isLoggedIn) {
       if (cartItems.length === 0){
         dispatch(loadItemsFromCart())
         dispatch(loadOrders());
       }
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, cartItems, dispatch]);
   
 
   return (

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import './header.css';
 import { NavLink, Link } from "react-router-dom";
 import { selectCart} from '../cart/cartSlice';
-import { selectUser, selectIsLoggedIn } from '../user/userSlice';
+import { selectIsLoggedIn } from '../user/userSlice';
 import { IoCart, IoPerson  } from "react-icons/io5";
 
 
