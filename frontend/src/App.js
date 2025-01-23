@@ -14,7 +14,6 @@ import { CreateUser } from './features/createUser/CreateUser.js';
 import { Login } from './features/login/Login.js';
 import { Orders } from './features/orders/Orders.js';
 import { OrderComplete } from './features/orders/OrderComplete.js';
-import { Search } from './features/search/Search.js';
 import { loadProducts } from './features/products/productSlice.js';
 import { checkAuth, selectIsLoggedIn } from './features/user/userSlice.js';
 import { loadItemsFromCart, selectCart } from './features/cart/cartSlice.js';

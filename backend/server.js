@@ -9,7 +9,7 @@ const db = require('./routes/queries');
 const cookieParser = require('cookie-parser');
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.FE_ORIGIN,
   credentials: true
 }));
 

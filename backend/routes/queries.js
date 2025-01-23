@@ -3,11 +3,14 @@ const jwt = require('jsonwebtoken');
 
 const Pool = require('pg').Pool;
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'breakfast_time',
-    password: 'postgres',
-    port: 5432
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 
@@ -96,12 +99,15 @@ const checkAuth = async (req, res, next) => {
 const createUser = async (req, res) => {
     const { username, name, password, email } = req.body;
     try {
+        console.log( username, name, password, email);
         const usernameCheck = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
         const emailCheck = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
         if (usernameCheck.rows.length > 0) {
             return res.status(400).json({error:'Username already taken'});
         } else if (emailCheck.rows.length > 0) {
             return res.status(400).json({error: 'Email already taken'});
+        } else if (username.length === 0 || name.length === 0  || password.length === 0 || emailCheck.length === 0) {
+            return res.status(400).json({error: 'Please fill in all fields.'});
         } else if (password.length < 7) {
             return res.status(400).json({error:'Password must be at least 6 characters long.'})
         }
@@ -119,7 +125,7 @@ const createUser = async (req, res) => {
                 res.cookie('token', token, { httpOnly: true, secure: false, sameSite: 'lax', maxAge: 3600000 });
 
                 req.user = { user_id: user.user_id, username: user.username, name: user.name, email: user.email, cartItems: req.user ? req.user.cartItems : [] };
-
+                console.log(user);
                 return res.status(201).json({ user: {user_id: req.user.user_id, username: req.user.username, name: req.user.name, email: req.user.email} });
             }
         )
@@ -142,14 +148,14 @@ const loginUser = async (req, res) => {
                 req.user = {user_id: userExists.rows[0].user_id, username: userExists.rows[0].username, name: userExists.rows[0].name, email: userExists.rows[0].email, cartItems: req.user ? req.user.cartItems : []};
                 return res.status(201).json({token: token, user:{user_id: req.user.user_id, username: req.user.username, name: req.user.name, email: req.user.email}});
             } else {
-                return res.status(401).send('Invalid credentials');
+                return res.status(400).json({error: 'Invalid credentials'});
             }
         } else {
-            return res.status(401).send('Invalid credentials');
+            return res.status(400).json({error: 'Invalid credentials'});
         };
     } catch (err) {
         console.log(err);
-        res.status(401).send('Invalid credentials');
+        res.status(400).json({error: 'Invalid credentials'});
     }
 };
 
@@ -206,7 +212,6 @@ const searchProducts = (req, res) => {
     const queryStart = 'SELECT products.* FROM products JOIN tags ON products.product_id = tags.product_id WHERE ';
 
     const queryWords = words.map(word => `%${word}%`);
-    console.log(queryWords);
     const whereConditions = words.map((word, index) => `
         LOWER(products.name) LIKE $${index+1} 
         OR LOWER(products.card_category) LIKE $${index+1} 
@@ -224,7 +229,6 @@ const searchProducts = (req, res) => {
 };
 
 const getCartItems = (req, res) => {
-
     pool.query(' SELECT product_id, quantity FROM cart_items WHERE user_id = $1', [req.user.user_id], (err, results) => {
         if (err) {
             console.log(err);
@@ -251,6 +255,7 @@ const mergeCartItems = async (req, res) => {
 
 const overrideCartItems = async (req, res) => {
     const cartItems = req.body.cartItems;
+    console.log(req.user);
     try{
         await pool.query('DELETE FROM cart_items WHERE user_id = $1', [req.user.user_id]);
         for (let item of cartItems) {
@@ -318,7 +323,7 @@ const removeItemFromCart = async (req, res) => {
                 res.status(500).send('Error reducing quantity');
             }
             pool.query(`DELETE FROM cart_items WHERE quantity < 1`);
-            res.status(200).json(`Successfully reduced quantity of product ${product_id}`);
+            res.status(200).json({message: `Successfully reduced quantity of product ${product_id}`, productId: product_id});
         })
     } else {
         res.status(200).json('User not signed in. Successfully remove product ' + product_id)
@@ -327,14 +332,13 @@ const removeItemFromCart = async (req, res) => {
 
 const clearItemFromCart = async (req, res) => {
     const product_id = parseInt(req.params.id);
-    console.log(product_id + 'balh' + req.user.user_id)
     if (req.user && req.user.user_id) {
         pool.query('DELETE FROM cart_items WHERE product_id = $1 AND user_id = $2', [product_id, req.user.user_id], (err, response) => {
             if (err) {
                 console.log(`Error removing product ${product_id} from ${req.user.user_id} cart: `, err);
                 res.status(500).send('Error removing product from cart');
             }
-            res.status(200).json('Successfully removed product ' + product_id);
+            res.status(200).json({message: 'Successfully removed product ' + product_id, productId: product_id});
         })
     } else {
         res.status(200).json('User not signed in.  Successfully removed product');
