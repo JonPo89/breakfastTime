@@ -1,8 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, selectIsLoggedIn } from '../user/userSlice';
-import { useDispatch, useSelector } from 'react-redux'
-import { loadItemsFromCart } from '../cart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 export function Login () {
     const dispatch = useDispatch();
