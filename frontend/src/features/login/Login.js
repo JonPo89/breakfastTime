@@ -23,8 +23,7 @@ export function Login () {
         if (username.length === 0 || password.length === 0) {
             alert('Please fill in fields');
         } else {
-            dispatch(loginUser({username, password})).unwrap();
-            dispatch(loadItemsFromCart());
+            dispatch(loginUser({username, password}));
         }
         
     }  

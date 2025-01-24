@@ -13,10 +13,11 @@ const pool = new Pool({
     }
 });
 
+const secret = process.env.JWT_SECRET;
 
 const createSessionToken = () => {
     const payload = { cartItems : [] };
-    const secret = process.env.JWT_SECRET;
+
     const options = { expiresIn: '24h'};
     return jwt.sign(payload, secret, options);
 }
@@ -24,10 +25,10 @@ const createSessionToken = () => {
 const updateTokenWithUser = (token, user) => {
     if (!token) {
         console.log('updateTokenWithUser, no token');
-        return jwt.sign({ user_id: user.user_id, username: user.username, name: user.name, email: user.email, cartItems: user.cartItems ? user.cartItems : [] }, 'indicative_secreT1!', { expiresIn: '1h' });
+        return jwt.sign({ user_id: user.user_id, username: user.username, name: user.name, email: user.email, cartItems: user.cartItems ? user.cartItems : [] }, secret, { expiresIn: '1h' });
     }
-    const decoded = jwt.verify(token, 'indicative_secreT1!');
-    const secret = 'indicative_secreT1!';
+    const decoded = jwt.verify(token, secret);
+
     const newPayload = {
         ...decoded,
         user_id: user.user_id,
@@ -44,7 +45,7 @@ const authenticateToken = (req, res, next) => {
     const token = req.cookies.token || req.headers['authorization']?.split(' ')[1];
     if (!token) return next();
     
-    jwt.verify(token, 'indicative_secreT1!', (err, decoded) => {
+    jwt.verify(token, secret, (err, decoded) => {
         if (err){
             res.clearCookie('token');
             return res.status(403).send('Invalid Access Token');
@@ -76,7 +77,7 @@ const checkAuth = async (req, res, next) => {
             return res.status(200).json({ isAuthenticated: false });
         }
         
-        jwt.verify(token, 'indicative_secreT1!', (err, decoded) => {
+        jwt.verify(token, secret, (err, decoded) => {
             if (err) {
                 return res.status(401).json({ message: 'Token invalid or expired' });
             }
@@ -121,7 +122,7 @@ const createUser = async (req, res) => {
                     res.status(500).send('Error creating user');
                 }
                 const user = results.rows[0];
-                const token = jwt.sign({ user_id: user.user_id, username: user.username, name: user.name, email: user.email, cartItems: user.cartItems }, 'indicative_secreT1!', { expiresIn: '1h' });
+                const token = jwt.sign({ user_id: user.user_id, username: user.username, name: user.name, email: user.email, cartItems: user.cartItems }, secret, { expiresIn: '1h' });
                 res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 3600000 });
 
                 req.user = { user_id: user.user_id, username: user.username, name: user.name, email: user.email, cartItems: req.user ? req.user.cartItems : [] };
@@ -165,7 +166,7 @@ const getProducts = (req, res) => {
         if (err) {
             throw err;
         }
-        res.status(200).json(results.rows);
+        res.status(200).json(results.rows); 
     })
 };
 

@@ -27,13 +27,17 @@ function App() {
   useEffect(() => {
     dispatch(checkAuth());
     dispatch(loadProducts());
+  }, [ dispatch]);
+
+  useEffect(() => {
+
     if (isLoggedIn) {
       if (!cartItems || cartItems.length === 0){
         dispatch(loadItemsFromCart())
         dispatch(loadOrders());
       }
     }
-  }, [isLoggedIn, cartItems, dispatch]);
+  }, [isLoggedIn, cartItems, dispatch])
   
 
   return (

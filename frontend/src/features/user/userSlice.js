@@ -126,8 +126,6 @@ const userSlice = createSlice({
                 if (action.payload && action.payload.user) {
                     state.profile = action.payload.user;
                     state.isLoggedIn = true;
-                } else if(state.profile.user_id){
-                    state.isLoggedIn = true;
                 } else {
                     state.isLoggedIn = false;
                     state.profile = {};
@@ -164,10 +162,12 @@ const userSlice = createSlice({
             .addCase(signout.pending, (state) => {
                 state.hasError = false;
                 state.isLoading = true;
+                state.isLoggedIn = false;
             })
             .addCase(signout.rejected, (state) => {
                 state.isLoading = false;
                 state.hasError = true;
+                state.isLoggedIn = false;
             })
             .addCase(signout.fulfilled, (state, action) => {
                 state.isLoading = false;

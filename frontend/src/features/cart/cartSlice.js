@@ -43,7 +43,6 @@ export const overRideCart = createAsyncThunk(
     'overRideCart/cart',
     async (cartItems) => {
         try {
-            console.log(cartItems);
             const response = await fetch(baseurl + '/cart/override', {
                 method: 'POST',
                 credentials: 'include',

@@ -90,30 +90,32 @@ export function Cart () {
                     {cartList.map(cartItem => {
                         const {product_id, quantity} = cartItem
                         const product = productList.find(product => product.product_id === product_id);
-
-                        return (
-                            <div className="cartItem">
-                                <img className="cartImage" alt={`${product.name}`} src={`${process.env.PUBLIC_URL}/images/products${product.image_url}/${product.image_name}`} />
-                                <div className="cartItemDetails">
-                                    <div className="cartItemLeftDetails">
-                                        <p><strong>{product.name}</strong></p>
-                                        <p>{product.product_type}</p>
-                                        <p><strong>Unit Price:</strong> {'$' + product.price}</p>
-                                    </div>
-                                    <div className="cartItemRightDetails">
-                                        <p id="removeButton" onClick={() => clearProductFromCartSubmit(product.product_id)}>Remove</p>
-                                        <div className="cartQty">
-                                            <div className="cartQtyControls">
-                                                <h3 className='addRemoveFromCart' onClick={(() => removeProductFromCartSubmit(product.product_id))}>-</h3>
-                                                <h5>{quantity}</h5>
-                                                <h3 className='addRemoveFromCart' onClick={() => addProductToCartSubmit(product.product_id)}>+</h3>
-                                            </div>
+                        if (product && product.name){
+                            return (
+                                <div className="cartItem">
+                                    <img className="cartImage" alt={`${product.name}`} src={`${process.env.PUBLIC_URL}/images/products${product.image_url}/${product.image_name}`} />
+                                    <div className="cartItemDetails">
+                                        <div className="cartItemLeftDetails">
+                                            <p><strong>{product.name}</strong></p>
+                                            <p>{product.product_type}</p>
+                                            <p><strong>Unit Price:</strong> {'$' + product.price}</p>
                                         </div>
-                                        <p><strong>Total Price:</strong> {'$' + product.price * quantity}</p>
+                                        <div className="cartItemRightDetails">
+                                            <p id="removeButton" onClick={() => clearProductFromCartSubmit(product.product_id)}>Remove</p>
+                                            <div className="cartQty">
+                                                <div className="cartQtyControls">
+                                                    <h3 className='addRemoveFromCart' onClick={(() => removeProductFromCartSubmit(product.product_id))}>-</h3>
+                                                    <h5>{quantity}</h5>
+                                                    <h3 className='addRemoveFromCart' onClick={() => addProductToCartSubmit(product.product_id)}>+</h3>
+                                                </div>
+                                            </div>
+                                            <p><strong>Total Price:</strong> {'$' + product.price * quantity}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
+                            )
+                        }
+                        
                     })}
                 <p id='viewMore' onClick={() => navigate('/products')}>View more products</p>
                 </div>
