@@ -31,14 +31,13 @@ function App() {
   }, [ dispatch]);
 
   useEffect(() => {
-
     if (isLoggedIn && userIsLoading === false) {
       if (!cartItems || cartItems.length === 0){
         dispatch(loadItemsFromCart())
         dispatch(loadOrders());
       }
     }
-  }, [isLoggedIn, cartItems, dispatch])
+  }, [isLoggedIn, cartItems, dispatch, userIsLoading]);
   
 
   return (

@@ -114,6 +114,8 @@ export function Cart () {
                                     </div>
                                 </div>
                             )
+                        } else {
+                            return null;
                         }
                         
                     })}
