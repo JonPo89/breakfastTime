@@ -179,6 +179,7 @@ const userSlice = createSlice({
 })
 
 export const selectIsLoggedIn = (state) => state.user.isLoggedIn;
+export const selectUserIsLoading = (state) => state.user.isLoading;
 export const selectUser = (state) => state.user.profile;
 
 export default userSlice.reducer;
