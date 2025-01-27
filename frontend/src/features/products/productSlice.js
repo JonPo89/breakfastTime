@@ -82,8 +82,14 @@ const productsSlice = createSlice({
             })
             .addCase(loadProducts.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.hasError = false;
-                state.products = action.payload;
+
+                if (action.payload) {
+                    state.products = action.payload;
+                    state.hasError = false;
+                } else {
+                    state.hasError = true;
+                }
+
             })
             .addCase(loadProductDetails.pending, (state) => {
                 state.isLoading = true;
@@ -119,4 +125,5 @@ export const selectProducts = (state) => state.products.products;
 export const selectIsLoading = (state) => state.products.isLoading;
 export const selectSearchResults = (state) => state.products.searchResults;
 export const selectActiveProduct = (state) => state.products.activeProduct;
+export const selectProductsHasError = (state) => state.products.hasError;
 export default productsSlice.reducer;

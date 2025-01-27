@@ -15,7 +15,6 @@
 #headerLogo {
     max-height: 2.7rem;
     object-fit: contain;
-
 }
 
 
@@ -103,3 +102,12 @@
 }
 
 
+@media only screen and (max-width: 550px){
+    #headerBottom{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 5rem;
+        padding-top: 0.5rem;
+    }
+}

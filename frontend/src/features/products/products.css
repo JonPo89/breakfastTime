@@ -16,7 +16,7 @@
     background-color: white;
     min-width: 10rem;
     max-width: 20rem;
-    flex: 1 1 15rem;
+    flex: 1 1 10rem;
 }
 
 .productListItem :hover {

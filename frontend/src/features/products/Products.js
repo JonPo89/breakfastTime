@@ -2,21 +2,24 @@ import React from "react";
 import './products.css';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { selectProducts, loadProductDetails } from './productSlice';
+import { selectProducts, loadProductDetails, selectProductsHasError } from './productSlice';
 
 export function Products () {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const productList = useSelector(selectProducts);
+    const productLoadError = useSelector(selectProductsHasError);
 
     const productPage = (product) => {
         dispatch(loadProductDetails(product.product_id));
         navigate(`/products/${product.name}`);
     }
 
-    if (!productList ) {
-        return <div>Loading...</div>
+    if (productLoadError) {
+        return <div><br/><p>Server is asleep</p><p><strong>Please refresh the page</strong></p></div>
+    } else if (!productList ){
+        return <div><h1>Loading...</h1></div>
     } else {
 
     return (

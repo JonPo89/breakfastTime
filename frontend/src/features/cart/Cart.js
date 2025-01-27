@@ -91,7 +91,7 @@ export function Cart () {
                         const {product_id, quantity} = cartItem
                         const product = productList.find(product => product.product_id === product_id);
                         if (product && product.name){
-                            return (
+                            return ( 
                                 <div className="cartItem">
                                     <img className="cartImage" alt={`${product.name}`} src={`${process.env.PUBLIC_URL}/images/products${product.image_url}/${product.image_name}`} />
                                     <div className="cartItemDetails">
