@@ -33,12 +33,17 @@ export function ProductPage() {
                             <img src={`${process.env.PUBLIC_URL}/images/products${image.url}/${image.name}`} alt={image.name} onClick={() => setActiveImage(index)}/>
                         ))}
                     </div>
-                    <img 
-                        src={`${process.env.PUBLIC_URL}/images/products${productDetails.images[activeImage].url}/${productDetails.images[activeImage].name}`} 
-                        key={`${productDetails.name} + hero`} 
-                        id="primaryProductImage" 
-                        alt={productDetails.name}
-                    />
+                    <a href={`${process.env.PUBLIC_URL}/images/products${productDetails.images[activeImage].url}/${productDetails.images[activeImage].name}`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <img 
+                            src={`${process.env.PUBLIC_URL}/images/products${productDetails.images[activeImage].url}/${productDetails.images[activeImage].name}`} 
+                            key={`${productDetails.name} + hero`} 
+                            id="primaryProductImage"   
+                            alt={productDetails.name}
+                        />
+                    </a>
                 
                     
                 </div>

@@ -34,11 +34,11 @@ export function Header() {
                 </div>
                 <div id="headerBottom">
                     <div className="headerEdge"></div>
-                    <div id="nav">
-                        <NavLink to="/" className={({isActive}) => isActive ? 'activeNavLink' : "navLink"}>Home</NavLink>
-                        <NavLink to="/about" className={({isActive}) => isActive ? 'activeNavLink' : "navLink"} >About</NavLink>
-                        <NavLink to="/products" className={({isActive}) => isActive ? 'activeNavLink' : "navLink"}>Products</NavLink>
-                    </div>
+                        <div id="nav">
+                            <NavLink to="/" className={({isActive}) => isActive ? 'activeNavLink' : "navLink"}>Home</NavLink>
+                            <NavLink to="/about" className={({isActive}) => isActive ? 'activeNavLink' : "navLink"} >About</NavLink>
+                            <NavLink to="/products" className={({isActive}) => isActive ? 'activeNavLink' : "navLink"}>Products</NavLink>
+                        </div>
                     <div id="userCart" className="headerEdge">
                         <Link to="/user" >
                             <IoPerson id="userIcon" style={{color: isLoggedIn ? 'white' : 'transparent'}}/>
