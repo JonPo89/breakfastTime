@@ -25,6 +25,7 @@ export const loginUser = createAsyncThunk(
     'user/loginUser',
     async ( {username, password}, { rejectWithValue } ) => {
         try {
+            const lowercaseUsername = username.toLowerCase();
             const response = await fetch(baseurl + '/user/login', {
                 method: 'POST',
                 credentials: 'include',
@@ -33,7 +34,7 @@ export const loginUser = createAsyncThunk(
                 },
                 
                 body: JSON.stringify({
-                    username: username, 
+                    username: lowercaseUsername, 
                     password: password}),
             });
             if (!response.ok) {
