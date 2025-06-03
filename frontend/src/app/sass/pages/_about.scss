@@ -1,0 +1,93 @@
+@use '../helpers/variables' as *;
+
+
+
+#aboutPage{
+    width: 90%;
+    display: inline-flex;
+    padding-bottom: 1rem;
+
+    #aboutLeft{
+        margin-right: 1rem;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 1rem;
+    
+        .introParagraphs{
+            font-size: 20px;
+        }
+        
+        #aboutOldDesigns{
+            display: inline-flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+
+            .oldDesigns{
+                width: 30%;
+                height: auto;
+            }
+        }
+    }
+
+    #aboutRight{
+        .imageContainer {
+            position: relative;
+            background-color: $eggYolk;
+            height: 360px;
+            width: 360px;
+            background-image: url('/images/face/Face.png');
+            background-position: center;
+            background-size: cover;
+            overflow: hidden;
+          }
+          
+          .facialHair{
+            display: inline-flex;
+            transition: all 0.5s;
+            position: relative;
+          }
+          
+          .hair {
+            display: inline-flex;
+            flex-direction: column;
+            position: relative;
+            top: -1085px;
+            transition: all 0.5s;
+          }
+    }
+    @media (max-width: $breakpoint-md) {
+        flex-direction: column-reverse;
+        align-items: center;
+
+        #aboutLeft{
+            margin-right: 0;
+        }
+
+        #aboutRight{
+            margin-bottom: 1rem;
+        }
+    }
+
+    @media (max-width: $breakpoint-sm){
+        
+        #aboutLeft{
+            margin-bottom: 2rem;
+        }
+        
+        .introParagraphs{
+            font-size: 16px !important;
+        }
+        
+        #aboutOldDesigns{
+            flex-direction: column;
+            align-items: center;
+
+            .oldDesigns{
+                width: 100% !important;
+                margin-bottom: 0.5rem;
+                height: auto;
+            }
+        }
+    }
+
+}

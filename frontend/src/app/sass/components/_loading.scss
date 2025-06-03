@@ -1,0 +1,36 @@
+@use "../helpers/variables" as *;
+
+#loadingProducts{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+
+    #loadingEgg{
+        height: 4rem;
+        width: 4rem;
+        background-color: white;
+        border-radius: 44% 56% 57% 43% / 35% 47% 53% 65%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        animation: spin 3s linear infinite;
+        margin: 1rem;
+    
+        #loadingYolk{
+            height: 2rem;
+            width: 2rem;
+            border-radius: 50%;
+            background-color: $eggYolk;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    }
+}

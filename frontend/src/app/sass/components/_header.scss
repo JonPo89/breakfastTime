@@ -1,0 +1,459 @@
+@use '../helpers/variables' as *;
+
+header {
+    background-color: $eggYolk;
+    height: 6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0.5rem; 
+    width: 100%;
+    
+    #logoSmall{
+        height: 3rem;
+        width: auto;
+        display: none;
+        transition: all 0.2s;
+        margin-left: 0.5rem;
+
+        &:hover{
+            height: 3.1rem;
+            margin-left: 0.4rem;
+        }
+
+        &:active{
+            height:2.8rem;
+            margin-left: 0.7rem;
+        }
+    }
+
+    #logoBig{
+        height: auto;
+        width: 16.45rem;
+        position: relative;
+        top: -0.2rem;
+        transition: all 0.2s;
+        margin-left: 0.5rem;
+
+        &:hover{
+            width: 16.95rem;
+            margin-left: 0.25rem;
+        }
+
+        &:active{
+            width:15.85rem;
+            margin-left: 0.75rem;
+        }
+    }
+
+    nav{
+        display: inline-flex;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 12;
+        
+        .navContainer{
+            background-color: white;
+            width: 105px;
+            height: 4rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 1rem;
+            transition: all 0.5s ease-out;
+            overflow: visible;
+            position: relative;
+            border: 1px solid black;
+            
+            svg {
+                fill: $eggYolk;
+            }
+           
+            &:hover{
+                width: calc(105px + .5rem);
+                height: 4.5rem;
+                margin: 0rem 1.5rem;
+            }
+
+            &:active{
+                width: calc(105px - 0.2rem);
+                height: 3.8rem;
+                margin: 0 2rem;
+                transition: all 0.2s;
+            }
+        }
+
+        #homeContainer{
+            border-radius: 60% 40% 40% 60% / 50% 50% 50% 50% ;
+            border-color: black;
+            border-width: 1px;
+        }
+
+        #aboutContainer{
+            border-radius: 50% 50% 52% 48% / 45% 58% 42% 55% ;
+        }
+
+        #shopContainer{
+            border-radius: 35% 65% 64% 36% / 45% 48% 52% 55% 
+        }
+
+        
+    }
+    #userCart{
+        display: inline-flex;
+        align-items: center;
+        margin-right: 0.5rem;
+
+        #userBox{
+            overflow: hidden;
+        }
+        
+        #userIcon {
+            font-size: 3rem;
+            stroke-width: 30px;
+            stroke: white;
+            color: transparent;
+            transition: all 0.2s;
+            margin-right: 0.5rem;
+            margin-left: 0.2rem;
+            
+            &:hover{
+                color: white;
+                cursor: pointer;
+                font-size: 3.4rem;
+                margin-right: 0.3rem;
+                margin-left: 0rem;
+            }
+
+            &:active{
+                font-size:2.9rem;
+                margin-right: 0.6rem;
+                margin-left: 0.3rem;
+            }
+        }
+
+        .userCutlery{
+            font-size: 1.5rem;
+            color: white;
+            position: absolute;
+            transition: all 0.5s;
+        }
+
+        #forkIcon{
+            -webkit-transform: scale(-1, 1) translateX(.2rem) translateY(0.7rem) rotate(-0.12turn);
+            -moz-transform: scale(-1, 1) translateX(.2rem) translateY(0.7rem) rotate(-0.12turn);
+            -o-transform: scale(-1, 1) translateX(.2rem) translateY(0.7rem) rotate(-0.12turn);
+            transform: scale(-1, 1) translateX(.2rem) translateY(0.7rem) rotate(-0.12turn);
+
+        }
+
+        #knifeIcon{
+            -webkit-transform: translateX(-1.6rem) translateY(0.8rem) rotate(-0.12turn);
+            -moz-transform: translateX(-1.6rem) translateY(0.8rem) rotate(-0.12turn);
+            -o-transform: translateX(-1.6rem) translateY(0.8rem) rotate(-0.12turn);
+            transform: translateX(-1.6rem) translateY(0.8rem) rotate(-0.12turn);
+        }   
+
+        #cartIcon{
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50%;
+            background-color: white;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0.5rem;
+            margin-right: 0.1rem;
+            padding: 0;
+            transition: all 0.2s;
+            
+
+            &:hover{
+                height: 3.2rem;
+                width: 3.2rem;
+                margin-left: 0.4rem;
+                margin-right: 0rem;
+                cursor: pointer;
+            }
+
+            &:active{
+                height:2.9rem;
+                width: 2.9rem;
+                margin-left: 0.55rem;
+                margin-right: 0.15rem;
+            }
+
+            h2{
+                font-family: 'hip horay';
+                font-weight: normal;
+                font-size: 20px;
+                color: $eggYolk;
+            }
+        
+            #noItemsCart{
+                height: 2rem;
+                width: 2rem;
+                border: 3px solid $eggYolk;
+                border-radius: 50%;
+            }
+
+            #smileyCart{
+                height: 1.5rem;
+                width: 1.5rem;
+                background-color: $eggYolk;
+                border-radius: 50%;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                
+                h2{
+                    color:white;
+                }
+            }
+        }
+    }
+
+    #burgerMenu{
+        display: none;
+        
+    }
+
+    #burgerSpatula{
+        display: none;
+    }
+
+    @media(max-width:1000px){
+        #logoBig{
+            display: none;
+        }
+
+        #logoSmall{
+            display: block;
+        }
+    }
+
+    @media(max-width:$breakpoint-md){
+        #logoBig{
+            display: block;
+            
+        }
+
+        #logoSmall{
+            display: none;
+        }
+        
+        nav{
+            display: none;
+        }
+
+        #userCart{
+            display: none;
+        }
+        
+        #burgerMenu{
+            display: inline-flex;
+            flex-direction: column;
+            align-items: end;
+            justify-content: end;
+            position: fixed;
+            right: 0.5rem;
+            z-index: 10;
+
+            #burgerToggle{
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                border: 1px solid $eggYolk;
+                aspect-ratio: 3/4;
+                width: 3.5rem;
+                height: auto;
+                font-size: 3rem;
+                color: $eggYolk;
+                position: relative;
+                transition: all 0.2s, font-size 0s;
+                cursor: pointer;
+                margin: 0.5rem;
+
+                &:hover{
+                    width: 3.7rem;
+                    font-size: 3.2rem;
+                    margin: 0.4rem;
+                }
+
+                &:active{
+                    width: 3.3rem;
+                    font-size: 2.8rem;
+                    margin: 0.6rem;
+                }
+            }
+
+            #burgerNav{
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                position: fixed;
+                transition: right 0.5s ease-out;
+                z-index: 10 !important;
+                top: 7.5rem;
+                
+
+                .burgerLink{
+                    font-size: 1.5rem;
+                    font-family: 'hip horay';
+                    color: $eggYolk;
+                    margin: 0.1rem;
+                    margin-bottom: 0.5rem;
+
+                    &:hover{
+                        font-size: 1.6rem;
+                        margin: 0.05rem;
+                        margin-bottom: 0.45rem;
+                    }
+
+                    &:active{
+                        font-size: 1.4rem;
+                        margin: 0.2rem;
+                        margin-bottom: 0.55rem;
+                    }
+                }
+
+                #burgerUserCart{
+                    width: 100%;
+                    display: inline-flex;
+                    align-items: start;
+                    justify-content: center;
+                    border-top: 1px solid $eggYolk;
+                    padding-top: 0.5rem;
+
+                    #burgerUserIcon {
+                        font-size: 1.8rem;
+                        stroke-width: 30px;
+                        stroke: $eggYolk;
+                        color: transparent;
+                        transition: all 0.2s;
+                        margin: 0.2rem;
+                        margin-right: 0.7rem;
+                        
+                        &:hover{
+                            color: $eggYolk;
+                            cursor: pointer;
+                            font-size: 2.2rem;
+                            margin: 0;
+                            margin-right: 0.5rem;
+                        }
+
+                        &:active{
+                            font-size: 1.7rem;
+                            margin: 0.25rem;
+                            margin-right: 0.75rem;
+                        }
+                    }
+
+                    .burgerUserCutlery{
+                        font-size: 0.75rem;
+                        color: $eggYolk;
+                        transition: top 0.5s;
+                        position: absolute;
+                    }
+
+                    #burgerForkIcon{
+                        -webkit-transform: scale(-1, 1) translateY(0.8rem) translateX(0rem) rotate(-0.12turn);
+                        -moz-transform: scale(-1, 1) translateY(0.8rem) translateX(0rem) rotate(-0.12turn);
+                        -o-transform: scale(-1, 1) translateY(0.8rem) translateX(0rem) rotate(-0.12turn);
+                        transform: scale(-1, 1) translateY(0.8rem) translateX(0rem) rotate(-0.12turn);
+                    }
+
+                    #burgerKnifeIcon{
+                        -webkit-transform: translateY(-1.4rem) translateY(-.2rem) translateX(1.5rem) rotate(-0.12turn);
+                        -moz-transform: translateY(-1.4rem) translateY(-.2rem) translateX(1.5rem) rotate(-0.12turn);
+                        -o-transform: translateY(-1.4rem) translateY(-.2rem) translateX(1.5rem) rotate(-0.12turn);
+                        transform: translateY(-1.4rem) translateY(-.2rem) translateX(1.5rem) rotate(-0.12turn);
+                    }
+
+                    #burgerCartIcon{
+                        height: 1.9rem;
+                        width: 1.9rem;
+                        border-radius: 50%;
+                        border: 2px solid $eggYolk;
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 0;
+                        transition: all 0.2s;
+                        margin: 0.2rem;
+                        margin-left: 0.7rem;
+                        
+
+                        &:hover{
+                            height: 2.2rem;
+                            width: 2.2rem;
+                            cursor: pointer;
+                            margin: 0.05rem;
+                            margin-left: 0.55rem;
+                        }
+
+                        &:active{
+                            height: 1.7rem;
+                            width: 1.7rem;
+                            margin: 0.3rem;
+                            margin-left: 0.8rem;
+                        }
+
+                        h2{
+                            font-family: 'hip horay';
+                            font-weight: normal;
+                            font-size: 16px;
+                            color: $eggYolk;
+                        }
+                    
+                        #burgerNoItemsCart{
+                            height: 1rem;
+                            width: 1rem;
+                            border: 2px solid $eggYolk;
+                            border-radius: 50%;
+                        }
+
+                        #burgerSmileyCart{
+                            height: 1.5rem;
+                            width: 1.5rem;
+                            background-color: $eggYolk;
+                            border-radius: 50%;
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
+                            
+                            h2{
+                                color:white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #burgerSpatula{
+            position: fixed;
+            transform: rotate(270deg);
+            top: -16rem;
+            z-index: 7;
+            display: block;
+            height: auto;
+            width: 12rem;
+            transition: right 0.5s ease-out;
+
+        }
+    }
+
+    @media (max-width: $breakpoint-sm){
+        #logoSmall{
+            display: block;
+        }
+
+        #logoBig{
+            display: none;
+        }
+    }
+
+}

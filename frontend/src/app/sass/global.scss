@@ -1,0 +1,150 @@
+@use "helpers/variables" as *;
+@use "components/splash";
+@use "components/header";
+@use "components/addedToCart";
+@use "components/banner";
+@use "components/loading";
+@use "components/error";
+@use "pages/home";
+@use "pages/shop";
+@use "pages/user";
+@use "pages/productID";
+@use "pages/cart";
+@use "pages/order";
+@use "pages/about";
+
+@font-face {
+  font-family:'Hip Horay';
+  src: url('/fonts/Hip Horay.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+:root {
+    --background: $eggYolk;
+    --foreground: #171717;
+  }
+  
+
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .page{
+    background-color: $eggYolk;
+    min-height: calc(100vh - 6rem);
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+    
+  }
+  
+  
+  h1 {
+    font-family: 'Hip Horay';
+    font-size: 3rem;
+    font-weight: normal;
+  }
+
+  h2{
+    font-family: 'Hip Horay';
+  }
+
+  h3{
+    font-family: 'Hip Horay';
+  }
+
+  h4{
+    font-family: 'Hip Horay';
+    font-size: 1.2rem;
+    color: $eggYolk;
+    font-weight: normal;
+  }
+
+  p{
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  }
+
+  button{
+    border-radius: 50% 50% 59% 41% / 47% 54% 46% 53%;
+    font-size: 20px;
+    font-family: 'hip horay';
+    background-color: $eggYolk;
+    color: white;
+    height: 100px;
+    width: 100px;
+    margin: 6px;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover{
+      height: 106px;
+      width: 106px;
+      margin: 3px;
+      background-color: $eggYolkLight;
+    }
+
+    &:active{
+      border-radius: 50% 50% 42% 58% / 60% 48% 52% 40%;
+      height: 94px;
+      width: 94px;
+      margin: 9px;
+      background-color: $eggYolkDark;
+    }
+  }
+
+  input{
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.5s;
+    padding: 0 1rem;
+
+    &:focus{
+      height: 2.5rem
+    }
+  }
+
+  #toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    animation: fadein 0.2s ease, fadeout 0.2s ease 1.8s;
+  
+  }
+  
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes fadeout {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+  }
+
+  

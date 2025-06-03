@@ -13,6 +13,8 @@ const pool = new Pool({
     }
 });
 
+
+
 const secret = process.env.JWT_SECRET;
 
 const createSessionToken = () => {
@@ -156,7 +158,7 @@ const loginUser = async (req, res) => {
         };
     } catch (err) {
         console.log(err);
-        res.status(400).json({error: 'Invalid credentials'});
+        res.status(400).json({error: 'Invalid credentials'});  
     }
 };
 
@@ -176,12 +178,18 @@ const getProductById = (req, res) => {
         if (err) {
             throw err;
         }
-        const product = results.rows[0];
-        product.images = results.rows.map(image => ({
+
+        if (results.rows.length === 0){
+            return res.status(404).json({error: 'Product Not Found'});
+        }
+        
+            const product = results.rows[0];
+            product.images = results.rows.map(image => ({
             name: image.image_name,
             url: image.image_url
-        }))
-        res.status(200).json(product);
+            }))
+            res.status(200).json(product);
+        
     } )
 };
 
@@ -320,6 +328,7 @@ const removeItemFromCart = async (req, res) => {
         }
     }
     */
+   
     if (req.user && req.user.user_id) {
         pool.query('UPDATE cart_items SET quantity = quantity - 1 WHERE user_id = $1 AND product_id = $2', [req.user.user_id, product_id], (err, results) => {
             if (err) {
@@ -330,7 +339,7 @@ const removeItemFromCart = async (req, res) => {
             res.status(200).json({message: `Successfully reduced quantity of product ${product_id}`, productId: product_id});
         })
     } else {
-        res.status(200).json('User not signed in. Successfully remove product ' + product_id)
+        res.status(200).json({message: 'Successfully reduced quantitiy of product, not signed in', productId: product_id});
     }
 };
 
@@ -394,15 +403,16 @@ const loadPreviousOrders = async (req, res) => {
         return res.status(400).send('User not logged in');
     };
     const userId = req.user.user_id;
-    
     try {
         const {rows: orderIds} = await pool.query(
             'SELECT * FROM orders WHERE user_id = $1 ORDER BY order_id DESC',
             [userId]
         );
+
+        console.log(orderIds);
         
         if (orderIds.length === 0) {
-            return res.status(200).send('No previous orders found');
+            return res.status(200).send([]);
         }
 
         const orders = await Promise.all(

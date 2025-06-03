@@ -1,0 +1,128 @@
+@use '../helpers/variables' as *;
+
+#ordersPage{
+    min-height: calc(100vh - 8rem);
+    max-width: 600px;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 2rem;
+    
+    
+
+    #orderPageNav{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+        width: 100%;
+
+        .orderPageNavButton{
+            font-weight: bold;
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+            user-select: none;
+        }
+    }
+    
+}
+
+.orders{
+    h1{
+        margin-bottom: 1rem;
+    }
+
+    h2{
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        margin-bottom: 1rem;
+    }
+
+    p{
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    }
+    .individualOrder{
+        background:
+            conic-gradient(from -45deg at bottom,white,white 1deg 89deg,$eggYolk 90deg) bottom/10px 51% repeat-x,
+            conic-gradient(from 135deg at top   ,white,white 1deg 89deg,$eggYolk 90deg) top   /10px 51% repeat-x;
+        padding: 2rem;
+        text-align: start;
+        margin-right: 0.5rem;
+        width: 100%;
+        overflow: auto;
+        margin-bottom: 1rem;
+
+        .individualOrderDetails{
+            display: inline-flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+    .orderItem{
+        display: inline-flex;
+        padding-top: 1rem;
+        width: 100%;
+        border-top: 1px solid black;
+        margin-bottom: 0.5rem;
+
+        .orderImage{
+            height: 6rem;
+            width: auto;
+            margin-right: 1rem;
+        }
+    }
+
+    @media(max-width:$breakpoint-sm){
+        .individualOrder{
+            .individualOrderDetails{
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+#orderCompletePage{
+    min-height: calc(100vh - 8rem);
+    max-width: 600px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+    #orderCompleteServerContainer{
+
+        #orderServerSpeech{
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: white;
+            border-radius: 1rem;
+            padding: 1rem 2rem;
+            padding-bottom: 2rem;
+            transition: all 0.2s;
+
+            &:after {
+                content: '';
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 0;
+                border: 2rem solid transparent;
+                border-top-color: white;
+                border-bottom: 0;
+                margin-left: -2rem;
+                margin-bottom: -3rem;
+            }
+        }
+
+        #orderReceiptServer{
+            width: 15rem;
+            height: auto;
+        }
+    }
+
+
+}

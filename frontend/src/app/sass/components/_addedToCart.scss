@@ -1,0 +1,27 @@
+@use '../helpers/variables' as *;
+
+#addedToCart{
+    top: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: white;
+    
+
+
+    .addedToCartImage{
+        height: 5rem;
+        width: 5rem;
+        border-radius: 46% 54% 58% 42% / 38% 49% 51% 62%;
+        padding: .5rem;
+        background-color: white;
+    }
+
+    h3{
+        color: black;
+        text-shadow: 1px 1px 2px 2px black;
+        font-weight: normal;
+        padding-right: 0.5rem;
+    }
+}

@@ -1,0 +1,198 @@
+@use '../helpers/variables' as *;
+
+@mixin white-dims($size, $order, $animationLength: 0){
+    height: #{$size}px;
+    width: #{$size}px;
+    left: #{-$size/2}px;
+    top: #{(-$size/2) + ($order*60) - 35}px;
+    filter: blur(20px);
+    
+    @keyframes floatUpDown-#{$size} {
+        0% { top: #{(-$size/2) + ($order*60) - 30}px; }
+        50% { top: #{(-$size/2) + ($order*60) - 10}px; } // Moves down slightly
+        100% { top: #{(-$size/2) + ($order*60) - 30}px; }
+      }
+    
+    @if $animationLength > 0 {
+        animation: floatUpDown-#{$size} #{$animationLength}s ease-in-out infinite alternate;
+    }
+}
+
+$eggSize: 90;
+
+
+
+#splashPage {
+    cursor: none;
+    position:absolute;
+    width: 100%;
+    height: 100vh;
+    display: inline-flex;
+    justify-content: start;
+    align-items: start;
+    background-color: $eggYolk;
+    transition: opacity 0.5s;
+
+    #logoSmall {
+        position: relative;
+        z-index: 7;
+        width: auto;
+        height: 3rem;
+        margin:1.5rem 1rem;
+        display: none;
+    }
+
+    #logoBig{
+        height: auto;
+        width: 16.45rem;
+        position: relative;
+        z-index: 7;
+        margin:1.65rem 1rem;
+    }
+
+    #spatula {
+      z-index: 6;
+      position: absolute;
+      width: 250px;
+      height: auto;
+      top: 0;
+      
+    }
+
+    h1 {
+        color: $eggYolk;
+        position: relative;
+        z-index: 7;
+    }
+    
+    .filter {
+        position: fixed;
+        z-index: 5;
+        width: 100vw;
+        height: 100vh;
+        top: 0px;
+        left: 0px;
+        filter: hue-rotate(307deg) saturate(152%) brightness(95.7%);
+        //filter: hue-rotate(320deg) saturate(225%) brightness(95%);
+        background: $eggYolk;
+        
+    }
+    .frame {
+        position: fixed;
+        z-index: 5;
+        width: 100vw;
+        height: 100vh;
+        top: 0px;
+        left: 0px;
+        filter: contrast(100);
+        background: $eggYolk;
+        transition: top 0.5s ease-in;
+    }
+
+    #splashEgg {
+      position: relative;
+      top: 0px;
+      left: 0px;
+      transition: top 0.5s ease-in;
+      z-index: 7;
+    }
+      
+    
+    .yolk {
+        position:absolute;
+        width:90px;
+        height:90px;
+        left: -45px;
+        top: -45px;;
+        background-color: $eggYolk;
+        border-radius: 50%;
+        z-index: 8;
+        
+       
+      }
+
+      .yolkDrip {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        background-color: $eggYolk;
+        z-index: 8;
+      }
+
+      #yolkDrip1{
+        width: 50px;
+        height: 50px;
+        left: -25px;
+        top: -25px;
+        filter: blur(12px);
+        transition: top 2.5s;
+      }
+
+      #yolkDrip2{
+        width: 30px;
+        height: 30px;
+        left: -15px;
+        top: -15px;
+        filter: blur(12px);
+        transition: top 2.5s 0.1s;
+      }
+
+      #yolkDrip3{
+        width: 60px;
+        height: 60px;
+        left: -30px;
+        top: -30px;
+        filter: blur(13px);
+        transition: top 2s 0.5s;
+      }
+
+      #yolkDrip4{
+        width: 30px;
+        height: 30px;
+        left: -35px;
+        top: -25px;
+        filter: blur(13px);
+        transition: top 2s 1s;
+      }
+      
+      .eggWhite {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(5px);
+        background-color: white;
+      }
+
+      #eggWhite1 {
+        @include white-dims($eggSize/0.6,1);
+        
+      }
+    
+      #eggWhite2 {
+        @include white-dims($eggSize/0.5,1.7, 3);
+      }
+      
+      #eggWhite3 {
+        @include white-dims($eggSize/0.65,3.2, 6);
+      }
+
+      #eggWhite4 {
+        @include white-dims($eggSize/1.5,4.4, 4.5);
+      }
+
+      #eggWhite5 {
+        @include white-dims($eggSize/2.25,5, 3);
+        
+      }
+      
+  @media(max-width:1000px){
+        #logoBig{
+            display: none;
+        }
+
+        #logoSmall{
+            display: block;
+        }
+    }
+      
+}

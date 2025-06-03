@@ -12,7 +12,8 @@ app.use(cors({
   origin: (origin, callback) => {
     const allowedOrigins = [
         process.env.FE_ORIGIN,
-        'http://localhost:3000', 
+
+         
     ];
 
     if (allowedOrigins.includes(origin) || !origin) {

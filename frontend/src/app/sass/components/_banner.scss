@@ -1,0 +1,25 @@
+@use '../helpers/variables' as *;
+
+#banner{
+    background-color: white;
+    position:fixed;
+    bottom: 0;
+    text-align: center;
+    padding: 0.5rem 3rem;
+    font-size: 12px;
+    width: 100%;
+    z-index: 9;
+    transition: padding-bottom 0.2s;
+    cursor: pointer;
+    border-top: 1px solid $eggYolk;
+    
+
+    #warning{
+        font-weight: bold;
+        color: red;
+    }
+
+    #bannerText{
+        margin-top: 0.5rem;
+    }
+}
