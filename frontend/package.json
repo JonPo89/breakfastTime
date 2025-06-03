@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@netlify/plugin-nextjs": "^5.11.2",
     "@reduxjs/toolkit": "^2.6.1",
     "animejs": "^4.0.0",
     "gsap": "^3.12.7",
