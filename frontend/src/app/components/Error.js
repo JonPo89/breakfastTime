@@ -35,7 +35,7 @@ export default function Error ({location}) {
                 console.error("Failed to copy email:", err);
                 alert("Failed to copy email. Please try again.");
             });
-        } else {
+        } else if (typeof window !== 'undefined'){
             const textArea = document.createElement("textarea");
             textArea.value = "jonporter89@gmail.com";
             document.body.appendChild(textArea);

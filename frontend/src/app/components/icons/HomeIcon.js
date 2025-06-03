@@ -13,19 +13,34 @@ const HomeIcon = ({homeActive}) => {
         "M40,0C40.7,0,41.5,0,42.3,0.4c1.7,1.1,2.3,8.1,2.6,11.1c0.4,4.9,0.8,10.1,1.4,14.9c0.1,0.6,0.4,1.9,0.8,1.8c2-0.6,3.6-23.5,4.9-25.3c0.4-0.6,1-0.6,1.5-0.6c0.7,0.1,2.4,0.5,2.9,1.3c0.5,0.7,0.7,1.7,0.8,2.7c0.6,3.8,0.5,7.9,0.6,11.6c0.2,5.1,0.7,9.9,1.2,14.7c0.1,1.2,0.2,2.4-0.1,3.7c-0.7,2.7-4.3,4.4-5.2,2.6c-0.5-1-0.8-3.5-0.9-5c-0.4-4-0.6-8.3-0.6-12.5c-0.5,3.8-1.7,12.6-2.8,15.7c-0.7,2-1.6,1.9-2.7,2c-5.3,0.4-4.8-8.5-5.9-17.2c-0.3,2.9-0.4,4.4-0.6,7.3c-0.3,3.2-0.6,9.1-1.9,11.2c-0.7,1.2-2.2,1.6-3,0.5c-0.3-0.4-0.5-1-0.6-1.6c-0.4-3.1,1.2-12.6,1.7-16.1c0.5-3.6,0.8-7.5,1.1-11.2c0.2-2.9,0.4-5.8,0.4-8.7c0-0.6-0.1-1.5,0.2-2C38.4,0.2,39.4,0.1,40,0z",
         "M73.6,26c0.4,0.9,0.2,3-0.4,4.3C72.9,31,72.5,31.6,72,32c-0.5,0.5-6.9,3.8-7.6,3.9c-1,0.2-1.9-0.1-2.6-1.2c-2.5-4.2-1.3-21.4,0.1-26.7c0.3-1.2,1-2.6,1.9-2.2C64.1,6,64.6,6,65,6.2c1.6,0.6,7.3,3.9,8.4,5.4c0.6,0.8,0.6,2.1,0.3,2.6c-0.4,0.4-1.8-0.3-2.4-0.6c-1.3-0.6-2.7-1.3-4-1.8c-0.4,1.4-0.8,3-0.9,4.8c1.4,0.1,4.8,0.4,5.4,2.3c0.3,1.2,0.2,3-0.6,3.9c-0.9,1-4.1,0.9-5.4,0.9c0,0.1,0,0.1-0.1,0.2C65.3,30.5,72.4,23.1,73.6,26z"]
 
+    let homeInactive1Path ;
+    let homeActive1Path ;
+    let homeActive1bPath;
+    let homeInactive2Path ;
+    let homeActive2Path;
+    let homeActive2bPath ;
+    let homeInactive3Path ;
+    let homeActive3Path ;
+    let homeActive3bPath ;
+    let homeInactive4Path;
+    let homeActive4Path;
+    let homeActive4bPath;
  
-    const homeInactive1Path = document.getElementById('homeInactive1');
-    const homeActive1Path = document.getElementById('homeActive1');
-    const homeActive1bPath = document.getElementById('homeActive1b');
-    const homeInactive2Path = document.getElementById('homeInactive2');
-    const homeActive2Path = document.getElementById('homeActive2');
-    const homeActive2bPath = document.getElementById('homeActive2b');
-    const homeInactive3Path = document.getElementById('homeInactive3');
-    const homeActive3Path = document.getElementById('homeActive3');
-    const homeActive3bPath = document.getElementById('homeActive3b');
-    const homeInactive4Path = document.getElementById('homeInactive4');
-    const homeActive4Path = document.getElementById('homeActive4');
-    const homeActive4bPath = document.getElementById('homeActive4b');
+    if (typeof window !== 'undefined'){
+      homeInactive1Path = document.getElementById('homeInactive1');
+     homeActive1Path = document.getElementById('homeActive1');
+     homeActive1bPath = document.getElementById('homeActive1b');
+     homeInactive2Path = document.getElementById('homeInactive2');
+     homeActive2Path = document.getElementById('homeActive2');
+     homeActive2bPath = document.getElementById('homeActive2b');
+     homeInactive3Path = document.getElementById('homeInactive3');
+     homeActive3Path = document.getElementById('homeActive3');
+     homeActive3bPath = document.getElementById('homeActive3b');
+     homeInactive4Path = document.getElementById('homeInactive4');
+     homeActive4Path = document.getElementById('homeActive4');
+     homeActive4bPath = document.getElementById('homeActive4b');
+    }
+    
       
     useEffect(() => {
       switchHome()

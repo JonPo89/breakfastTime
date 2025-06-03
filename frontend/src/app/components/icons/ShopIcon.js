@@ -16,18 +16,33 @@ const ShopIcon = ({shopActive}) => {
         "M55.2,36.8c-0.8,0.8-1.8,1.4-2.7,1.3c-0.5,0-1-0.3-1.3-0.9c-0.6-1.1-0.6-3-0.5-4.6c0.1-3.2,0.4-6.3,0.6-9.4c0.2-3.7,0.1-7.3,0.1-11c0-1.7-0.3-4.8-0.2-6.1c0.2-3.6,3.7-2.2,4.7,0.7c0.8-0.1,1.6,0,2.4,0.5c8.7,4.6,8.5,16.6,1.3,19.4c-0.9,0.3-1.7,0.6-2.6,0.4C57.2,30.2,57.6,34.5,55.2,36.8z"                                
     ]
  
-    const shopInactive1Path = document.getElementById('shopInactive1');
-    const shopActive1Path = document.getElementById('shopActive1');
-    const shopActive1bPath = document.getElementById('shopActive1b');
-    const shopInactive2Path = document.getElementById('shopInactive2');
-    const shopActive2Path = document.getElementById('shopActive2');
-    const shopActive2bPath = document.getElementById('shopActive2b');
-    const shopInactive3Path = document.getElementById('shopInactive3');
-    const shopActive3Path = document.getElementById('shopActive3');
-    const shopActive3bPath = document.getElementById('shopActive3b');
-    const shopInactive4Path = document.getElementById('shopInactive4');
-    const shopActive4Path = document.getElementById('shopActive4');
-    const shopActive4bPath = document.getElementById('shopActive4b');
+    let shopInactive1Path;
+    let shopActive1Path;
+    let shopActive1bPath;
+    let shopInactive2Path;
+    let shopActive2Path;
+    let shopActive2bPath;
+    let shopInactive3Path;
+    let shopActive3Path;
+    let shopActive3bPath;
+    let shopInactive4Path;
+    let shopActive4Path;
+    let shopActive4bPath ;
+
+    if (typeof window!=='undefined'){
+      shopInactive1Path = document.getElementById('shopInactive1');
+      shopActive1Path = document.getElementById('shopActive1');
+      shopActive1bPath = document.getElementById('shopActive1b');
+      shopInactive2Path = document.getElementById('shopInactive2');
+      shopActive2Path = document.getElementById('shopActive2');
+      shopActive2bPath = document.getElementById('shopActive2b');
+      shopInactive3Path = document.getElementById('shopInactive3');
+      shopActive3Path = document.getElementById('shopActive3');
+      shopActive3bPath = document.getElementById('shopActive3b');
+      shopInactive4Path = document.getElementById('shopInactive4');
+      shopActive4Path = document.getElementById('shopActive4');
+      shopActive4bPath = document.getElementById('shopActive4b');
+    }
 
     useEffect(() => {
         switchShop();

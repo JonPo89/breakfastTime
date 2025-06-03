@@ -105,8 +105,11 @@ export default function Header({splashPage}){
                 setBurgerToggle(false);
             }
         }
+        if (typeof window!=='undefined'){
+            document.addEventListener('mousedown', handleOutsideClick);
+        }
 
-        document.addEventListener('mousedown', handleOutsideClick);
+        
 
         return () => {
             document.removeEventListener('mousedown', handleOutsideClick)

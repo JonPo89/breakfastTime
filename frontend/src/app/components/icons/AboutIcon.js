@@ -14,23 +14,41 @@ const AboutIcon = ({aboutActive}) => {
         "M43.1,47.7C31.8,45.7,33,18.6,35.9,8.3c0.5-1.6,1-3.2,1.7-4.4c1.3-2.3,4.3-4.1,5.8-3.9c3,0.5,6.1,3.4,7.6,9.9c2.1,11.2,1.9,24.6-3.4,34.9C46.3,46.8,44.4,47.9,43.1,47.7z",
         "M60.1,45.5c-7.9-2.7-6.5-23.5-6.4-33.3c0-2-0.2-5.6,0.3-7.3c0.2-1,0.7-1.7,1.1-2.3c1.4-2,3.4-1.5,4.8,1c0.4,0.7,0.7,1.6,0.9,2.7c0.7,9.3,1.7,31.5,3.5,31.3c2.6-0.2,2.9-20.3,3.4-29.8c0.2-0.8,0.5-1.5,1-1.6c0.8-0.3,2.5,0.9,3,2.3c0.3,0.7,0.4,1.6,0.5,2.4c0.1,1.6-0.1,3.3-0.2,4.8c-0.4,5.3-0.9,11-0.6,16.5c0.1,2.1,1,6,0.8,7.9c-0.3,3-3.6,4.8-4-1.2C65.8,43.1,62.3,46.3,60.1,45.5z",
         "M82.3,34.9c-0.6,2.8-4.9,5-5.5,4c-0.2-0.3-0.2-0.5-0.2-1c-0.1-0.8,0-1.7,0-2.5c0.2-4.4,0.5-8.7,0.5-13c0-3.1,0.1-6.2-0.1-9.4c-1.7-0.7-5.1-0.3-4.1-5.2c0.1-0.4,0.2-0.6,0.4-0.7c0.7-0.4,7.5,3.8,8.8,4.6c0.9,0.5,3.4,1.8,3.9,2.9c0.4,0.8,0.4,1.7,0,2c-0.7,0.5-2.9-0.7-3.8-1.1C82.2,19.1,82.8,32.3,82.3,34.9z"]
-
+        
+    let aboutInactive1Path;
+    let aboutActive1Path;
+    let aboutActive1bPath ;
+    let aboutInactive2Path ;
+    let aboutActive2Path;
+    let aboutActive2bPath ;
+    let aboutInactive3Path;
+    let aboutActive3Path;
+    let aboutActive3bPath ;
+    let aboutInactive4Path;
+    let aboutActive4Path ;
+    let aboutActive4bPath;
+    let aboutInactive5Path;
+    let aboutActive5Path;
+    let aboutActive5bPath;
  
-    const aboutInactive1Path = document.getElementById('aboutInactive1');
-    const aboutActive1Path = document.getElementById('aboutActive1');
-    const aboutActive1bPath = document.getElementById('aboutActive1b');
-    const aboutInactive2Path = document.getElementById('aboutInactive2');
-    const aboutActive2Path = document.getElementById('aboutActive2');
-    const aboutActive2bPath = document.getElementById('aboutActive2b');
-    const aboutInactive3Path = document.getElementById('aboutInactive3');
-    const aboutActive3Path = document.getElementById('aboutActive3');
-    const aboutActive3bPath = document.getElementById('aboutActive3b');
-    const aboutInactive4Path = document.getElementById('aboutInactive4');
-    const aboutActive4Path = document.getElementById('aboutActive4');
-    const aboutActive4bPath = document.getElementById('aboutActive4b');
-    const aboutInactive5Path = document.getElementById('aboutInactive5');
-    const aboutActive5Path = document.getElementById('aboutActive5');
-    const aboutActive5bPath = document.getElementById('aboutActive5b');
+    if (typeof window !== 'undefined'){
+      aboutInactive1Path = document.getElementById('aboutInactive1');
+       aboutActive1Path = document.getElementById('aboutActive1');
+       aboutActive1bPath = document.getElementById('aboutActive1b');
+       aboutInactive2Path = document.getElementById('aboutInactive2');
+       aboutActive2Path = document.getElementById('aboutActive2');
+       aboutActive2bPath = document.getElementById('aboutActive2b');
+       aboutInactive3Path = document.getElementById('aboutInactive3');
+       aboutActive3Path = document.getElementById('aboutActive3');
+       aboutActive3bPath = document.getElementById('aboutActive3b');
+       aboutInactive4Path = document.getElementById('aboutInactive4');
+       aboutActive4Path = document.getElementById('aboutActive4');
+       aboutActive4bPath = document.getElementById('aboutActive4b');
+       aboutInactive5Path = document.getElementById('aboutInactive5');
+       aboutActive5Path = document.getElementById('aboutActive5');
+       aboutActive5bPath = document.getElementById('aboutActive5b');
+    }
+
 
       useEffect(() => {
         switchAbout()
