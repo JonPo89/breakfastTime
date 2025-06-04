@@ -18,7 +18,7 @@ export default function Login () {
         }
         
     }  
-    
+
     return (
         <div id="login" className="userInput">
             <div>
@@ -29,13 +29,25 @@ export default function Login () {
                 <h4>USERNAME:</h4>
                 <input type="text" placeholder="Username" ref={usernameRef} />
                 <h4>PASSWORD:</h4>
-                <input type="password" placeholder="Password" ref={passwordRef} />
+                <input 
+                    type="password" 
+                    placeholder="Password" 
+                    ref={passwordRef} 
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                        loginSubmit(
+                            usernameRef.current.value,
+                            passwordRef.current.value
+                        );
+                        }
+                    }} 
+                />
             </div>
             <div>
-            <button onClick={() => loginSubmit(
-                usernameRef.current.value,
-                passwordRef.current.value
-            )}>Login</button>
+                <button onClick={() => loginSubmit(
+                    usernameRef.current.value,
+                    passwordRef.current.value
+                )}>Login</button>
             </div>
         </div>
     )

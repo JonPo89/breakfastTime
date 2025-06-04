@@ -73,7 +73,7 @@ const HomeIcon = ({homeActive}) => {
     }
 
   return (
-   <svg viewBox={homeActive? "0 0 73.9 41.6" : "0 0 73.9 20"} className="navIcon" id="homeIcon" style={{height: homeActive? '41.6px' : "20px"}}>
+   <svg viewBox={homeActive? "0 0 73.9 41.6" : "0 0 73.9 20"} className="navIcon" id="homeIcon" style={{height: homeActive? '41.6px' : "20px", fill: homeActive? '#fbb040' : 'black'}}>
         <g >
           <path id="homeInactive1" d={homeInactivePaths[0]} />
           <path style={{ opacity: 0 }} id="homeActive1" d={homeActivePaths[0]} />

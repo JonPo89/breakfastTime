@@ -24,6 +24,7 @@ export default function SplashPage ({onFinish}) {
   const [transitionStyle, setTransitionStyle] = useState('');
   const [swipeTransition, setSwipeTransition] = useState(false);
   const [animationOver, setAnimationOver] = useState(false);
+  const [centerEgg, setCenterEgg] = useState(false);
   
   const router = useRouter();
 
@@ -132,6 +133,8 @@ export default function SplashPage ({onFinish}) {
     if (!swipeTransition){
       window.addEventListener("mousemove", handleMouseMove);
     }
+
+    setCenterEgg(true);
 
     
     return () => window.removeEventListener("mousemove", handleMouseMove);
@@ -255,7 +258,7 @@ export default function SplashPage ({onFinish}) {
             
             <div className="filter" >
                 <div className="frame">
-                  <div id="splashEgg" >
+                  <div id="splashEgg" style={{top: centerEgg? 0 : '50%', left: centerEgg? 0 : '50%'}}>
                     <div className="yolk" ref={yolkRef} 
                     style={{
                       height: yolkSize + 'px', 

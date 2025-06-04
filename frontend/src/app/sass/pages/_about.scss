@@ -5,7 +5,8 @@
 #aboutPage{
     width: 90%;
     display: inline-flex;
-    padding-bottom: 1rem;
+    padding-bottom: 3rem;
+    padding-top: 1rem;
 
     #aboutLeft{
         margin-right: 1rem;
@@ -55,7 +56,7 @@
             transition: all 0.5s;
           }
     }
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: 1000px) {
         flex-direction: column-reverse;
         align-items: center;
 

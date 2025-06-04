@@ -53,7 +53,7 @@
   }
 
   .page{
-    background-color: $eggYolk;
+    background: linear-gradient(0deg,rgba(255, 153, 0, 1) 0%, rgba(251, 176, 64, 1) 50%, rgba(251, 176, 64, 1) 100%);;
     min-height: calc(100vh - 6rem);
     width: 100%;
     display: inline-flex;

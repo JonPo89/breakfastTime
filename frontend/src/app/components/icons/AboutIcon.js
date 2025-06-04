@@ -87,7 +87,7 @@ const AboutIcon = ({aboutActive}) => {
     }
 
   return (
-      <svg viewBox={aboutActive? "0 0 86.4 47.7" : "0 0 86.4 20"} className="navIcon" id="homeIcon" style={{height:aboutActive? "47.7px" : "20px"}}>
+      <svg viewBox={aboutActive? "0 0 86.4 47.7" : "0 0 86.4 20"} className="navIcon" id="homeIcon" style={{height:aboutActive? "47.7px" : "20px", fill: aboutActive? '#fbb040' : 'black'}}>
         <g>
           <path id="aboutInactive1" d={aboutInactivePaths[0]} />
           <path style={{ opacity: 0 }} id="aboutActive1" d={aboutActivePaths[0]} />

@@ -9,8 +9,6 @@ import AppShell from "./AppShell";
 import { ToastProvider } from "./components/ToastProvider";
 import { useSplash } from "./context/splashContext";
 
-
-
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   const splash = useSplash();
@@ -28,6 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <title>Breakfast Time</title>
         <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet"></link>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"></link>
       </head>

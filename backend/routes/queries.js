@@ -13,8 +13,6 @@ const pool = new Pool({
     }
 });
 
-
-
 const secret = process.env.JWT_SECRET;
 
 const createSessionToken = () => {

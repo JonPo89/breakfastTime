@@ -8,6 +8,7 @@ import { gsap } from 'gsap';
 export default function Home() {
   const splash = useSplash();
   const [logoLetters, setLogoLetters] = useState([]);
+  const [overflowState, setOverflowState] = useState(false);
   const leftLocations = [0
     ,30.0443
     ,56.3739
@@ -33,6 +34,7 @@ export default function Home() {
   
   useEffect(() => {
     if (logoLetters.length > 0 && !splash) {
+      setOverflowState(true);
       const masterTimeline = gsap.timeline();
 
       logoLetters.forEach((_, index) => {
@@ -61,8 +63,8 @@ export default function Home() {
   
   return (
     <div className="page">
-      <div id="homePage">
-        <div id="welcomeMessage">
+      <div id="homePage" >
+        <div id="welcomeMessage" style={{overflow: overflowState? 'visible' : 'hidden'}}>
           <p>Welcome to</p>
           <div id="homeLogo">
             <div id="logoTop">

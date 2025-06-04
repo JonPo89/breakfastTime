@@ -1,7 +1,6 @@
 import {createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const baseurl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-
 export const loadProducts = createAsyncThunk(
     "products/loadProducts",
     async (arg, thunkAPI) => {

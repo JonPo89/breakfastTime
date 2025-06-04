@@ -35,7 +35,7 @@ export default function ProductPage({ params }) {
     if (primaryInfoRef.current && product.description){
       setPrimMinDims({height:primaryInfoRef.current.offsetHeight, width:primaryInfoRef.current.offsetWidth});
     }
-  },[product])
+  },[product]);
 
   const onSubmitAddToCart = () => {
     dispatch(addProductToCart(product.product_id));
@@ -62,7 +62,7 @@ export default function ProductPage({ params }) {
             <FaArrowCircleLeft className="imageScrollArrow" />
           </div>
           <div id="fullScreenImageContainer">
-            <IoCloseOutline id='fullScreenClose'/>
+            <IoCloseOutline id='fullScreenClose' onClick={()=>setImageMax(!imageMax)}/>
             <Image 
               src={`/images/products${product.image_url}/${product.images[activeImage].name}`} 
               alt={`${product.name} Main View`} 

@@ -62,7 +62,7 @@ export default function Error ({location}) {
                     <>
                         <p>There seems to be an issue with the server.<br/>
                         <span className="link" onClick={() => refreshPage()} style={{cursor:'pointer'}}>Refreshing the page may wake it up</span>
-                        <br/>If that doesn't work I'm sorry, give me an email on <span className="link" onClick={()=>copyEmail()} style={{cursor:'pointer'}}>jonporter89@gmail.com</span> and I can fix it ASAP</p>
+                        <br/>Apologies if the issue continues to occur, if you email on <br/><span className="link" onClick={()=>copyEmail()} style={{cursor:'pointer'}}>jonporter89@gmail.com</span><br/> and I can fix it ASAP</p>
 
                     </>
                     :

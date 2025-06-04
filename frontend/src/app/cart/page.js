@@ -18,7 +18,7 @@ export default function Cart(){
     const products = useSelector(selectProducts);
     const [cartTotalQty, setCartTotalQty] = useState(0);
     const [cartTotalCost, setCartTotalCost] = useState(0);
-    const descriptors = ['Funky Fellow', 'Fashionable Diva', 'Person with the weird eyebrow', 'Why are they wearing that', 'Obvious Toupee', 'Two feet']
+    const descriptors = ['Funky Fellow', 'Fashionable Diva', 'Person with the weird eyebrow', 'Four Eyes', 'Obvious Toupee', 'Socks and Sandals', 'Definitely owns a drone', 'Gives Off "Used to Be in a Band" Energy', 'Wears Sunglasses Indoors', 'Looks Like They Complain on TripAdvisor', 'Two feet']
     const [descriptor] = useState(() => Math.floor(Math.random() * descriptors.length));
     const [ordered, setOrdered] = useState(false);
     const speechWrapperRef = useRef(null);
@@ -76,7 +76,7 @@ export default function Cart(){
                     <div className="hiddenFlexItem">
                     </div>
                 </div>
-                <div id="cartServerContainer">
+                <div id="cartServerContainer" style={{height: '100%'}}>
                     <div id="cartServerSpeechWrapper" ref={speechWrapperRef} style={{minHeight: speechDims.height, minWidth: speechDims.width}}>
                         <div id="cartServerSpeech">
                             {!ordered ? 

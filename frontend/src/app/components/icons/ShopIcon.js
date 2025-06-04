@@ -77,7 +77,7 @@ const ShopIcon = ({shopActive}) => {
     }
 
   return (
-      <svg viewBox={shopActive? "0 0 64.8 42.5" : "0 0 64.6 20"} className="navIcon" id="homeIcon" style={{height:shopActive? "42.5px": "20px"}}>
+      <svg viewBox={shopActive? "0 0 64.8 42.5" : "0 0 64.6 20"} className="navIcon" id="homeIcon" style={{height:shopActive? "42.5px": "20px", fill: shopActive? '#fbb040' : 'black'}}>
         <g>
           <path id="shopInactive1" d={shopInactivePaths[0]} />
           <path style={{ opacity: 0 }} id="shopActive1" d={shopActivePaths[0]} />

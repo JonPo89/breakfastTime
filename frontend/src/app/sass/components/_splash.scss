@@ -91,8 +91,8 @@ $eggSize: 90;
 
     #splashEgg {
       position: relative;
-      top: 0px;
-      left: 0px;
+      top: 50%;
+      left: 50%;
       transition: top 0.5s ease-in;
       z-index: 7;
     }
